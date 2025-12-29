@@ -12,7 +12,7 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
 
-    "terraform-provider-skybound/internal/provider"
+	"terraform-provider-skybound/internal/provider"
 )
 
 var (
